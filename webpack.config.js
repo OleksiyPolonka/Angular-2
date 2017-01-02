@@ -4,7 +4,7 @@ var appEnv = process.env.NODE_ENV || 'development';
 
 var config = {
 
-  entry: './src/bootstrap.js',
+  entry: './src/app.module.js',
   output: {
     path: __dirname + '/dist',
     filename: "bundle.js"
@@ -34,7 +34,7 @@ var config = {
 
   // inject js bundle to index.html
   plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
+    template: './index.html',
     inject: 'body',
     minify: false
   })],
