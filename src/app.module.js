@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
+import { HeroDetailComponent } from './hero-detail.components';
 import App from './app.components';
 
 const moduleAnnotations = new NgModule({
@@ -14,7 +15,8 @@ const moduleAnnotations = new NgModule({
     FormsModule
   ],
   declarations: [
-    App
+    App,
+    HeroDetailComponent
   ],
   bootstrap: [App]
 });
