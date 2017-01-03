@@ -1,23 +1,13 @@
 import { Component } from '@angular/core';
 import 'reflect-metadata';
 
+import { Hero } from './hero';
+
 import { HEROES } from './constants/heroes';
 
 const componentAnnotations = new Component({
   selector: 'my-app',
   template: `
-    <div *ngIf='selectedHero'>
-      <h1>{{ title }}</h1>
-      <h2>{{ selectedHero.name }} details</h2>
-      <div>
-        <label>id: </label>
-        {{ selectedHero.id }}
-      </div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]='selectedHero.name' placeholder='name'>
-      </div>
-    </div>
     <h2>My Heroes</h2>
     <ul class="heroes">
       <li
@@ -28,6 +18,7 @@ const componentAnnotations = new Component({
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
+    <my-hero-detail [hero]='selectedHero'></my-hero-detail>
   `,
   styles: [`
     .selected {
@@ -80,22 +71,15 @@ const componentAnnotations = new Component({
   `]
 });
 
-export class Hero {
-  constructor(props) {
-    this.name = props.name;
-    this.id = props.id;
-  }
-}
-
 export default class App {
   constructor() {
     this.title = 'Tour of Heroes';
-    this.selectedHero;
+    this.selectedHero = new Hero();
     this.heroes = HEROES;
 
     this.onSelect = this.onSelect.bind(this);
   }
-  onSelect(hero) {
+  onSelect(hero = new Hero()) {
     this.selectedHero = hero;
   }
 }
